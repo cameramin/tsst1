@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>우리 동네 걷기 모임</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #f3f7f3; color: #17362a; font-family: system-ui, -apple-system, '맑은 고딕', sans-serif; font-size: 18px; line-height: 1.6; overflow-wrap: anywhere; }
+    .wrap { width: min(100% - 32px, 760px); margin: 0 auto; }
+    header { background: #174f37; color: white; padding: 24px 0 36px; }
+    .label { font-size: 1rem; font-weight: 700; margin: 0 0 24px; color: #d7efdd; }
+    h1 { font-size: clamp(2rem, 8vw, 3.2rem); line-height: 1.2; letter-spacing: -.04em; margin: 0 0 14px; }
+    header p:last-child { margin: 0; font-size: 1.15rem; max-width: 34em; }
+    main { padding: 24px 0 48px; }
+    .notice-example { background: #fff3cb; border-left: 5px solid #a36b00; color: #624300; padding: 14px 16px; border-radius: 8px; margin: 0 0 20px; font-weight: 700; }
+    section { background: #fff; border: 1px solid #d5e4d8; border-radius: 18px; padding: 24px; margin-bottom: 18px; }
+    h2 { margin: 0 0 16px; font-size: 1.5rem; line-height: 1.3; }
+    dl { margin: 0; }
+    .row { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 8px; border-top: 1px solid #dce9df; padding: 15px 0; }
+    dt { font-weight: 700; color: #315b45; } dd { margin: 0; font-weight: 700; }
+    ul { margin: 0; padding-left: 1.3em; } li + li { margin-top: 10px; }
+    button { display: block; width: 100%; min-height: 60px; margin-top: 22px; border: 0; border-radius: 12px; background: #175f3b; color: #fff; font: inherit; font-size: 1.15rem; font-weight: 800; cursor: pointer; padding: 14px 20px; }
+    button:hover { background: #10472c; } button:focus-visible { outline: 4px solid #cf8c12; outline-offset: 3px; }
+    #guide { margin-top: 18px; padding: 20px; background: #eaf4eb; border-radius: 12px; border: 1px solid #bcd8c2; }
+    #guide h3 { margin: 0 0 8px; font-size: 1.2rem; } #guide p { margin: 0; }
+    footer { text-align: center; color: #466354; font-size: 1rem; }
+    @media (max-width: 380px) { section { padding: 20px; } .row { grid-template-columns: 1fr; gap: 2px; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><p class="label">우리 동네 동아리</p><h1>우리 동네 걷기 모임</h1><p>이웃과 함께 동네를 천천히 걸으며 반갑게 만나요.</p></div></header>
+  <main class="wrap">
+    <p class="notice-example">아래 일정과 장소는 교육용 예시입니다. 실제 모임 정보가 아닙니다.</p>
+    <section aria-labelledby="meeting-title">
+      <h2 id="meeting-title">다음 모임 안내</h2>
+      <dl>
+        <div class="row"><dt>일정</dt><dd>예시: 12월 5일 토요일 오전 10시</dd></div>
+        <div class="row"><dt>집결 장소</dt><dd>예시: 우리 동네 공원 입구</dd></div>
+        <div class="row"><dt>준비물</dt><dd>편한 운동화, 마실 물, 모자</dd></div>
+      </dl>
+    </section>
+    <section aria-labelledby="notice-title">
+      <h2 id="notice-title">공지사항</h2>
+      <ul><li>이 페이지는 홈페이지 만들기 실습을 위한 예시입니다.</li><li>실제 모임의 일정과 장소는 확정 후 안내해 주세요.</li></ul>
+      <button type="button" id="guide-button" aria-expanded="false" aria-controls="guide">참여방법 보기</button>
+      <div id="guide" hidden><h3>참여 안내</h3><p>실제 모임의 날짜와 집결 장소를 확인한 뒤, 편한 운동화와 마실 물을 준비해 모이는 장소로 오세요. 위 일정과 장소는 예시이므로 실제 정보로 바꾼 후 안내해 주세요.</p></div>
+    </section>
+    <footer>우리 동네 걷기 모임 · 교육용 예시</footer>
+  </main>
+  <script>
+    const button = document.getElementById('guide-button');
+    const guide = document.getElementById('guide');
+    button.addEventListener('click', () => {
+      const opening = guide.hidden;
+      guide.hidden = !opening;
+      button.setAttribute('aria-expanded', String(opening));
+      button.textContent = opening ? '참여방법 닫기' : '참여방법 보기';
+    });
+  </script>
+</body>
+</html>
